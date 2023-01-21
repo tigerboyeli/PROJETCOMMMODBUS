@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "socketport.h": "c",
+        "stdio.h": "c"
+    }
+}
