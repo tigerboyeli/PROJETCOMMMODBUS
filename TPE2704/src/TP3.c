@@ -41,13 +41,14 @@ int StartAdressLectureDef()
 
 	int choix;
 	printf("\n****************************Menu des module**********************************");
-	printf("\n1.	Température mesurée par l’entrée capteur MV ");
-	printf("\n2.	Consigne prise en compte par le régulateur SP");
-	printf("\n3.	Mode de régulation (0 : Automatique / 1 : Manuel) ");
+	printf("\n1.	Temperature mesuree par l entree capteur MV ");
+	printf("\n2.	Consigne prise en compte par le regulateur SP");
+	printf("\n3.	Mode de regulation (0 : Automatique / 1 : Manuel) ");
 	printf("\n4.	Consigne de puissance 		");
-	printf("\n5.	Paramètre de régulation Proportionnelle ");
-	printf("\n6.	Paramètre de régulation Integrale");
-	printf("\n7.	Paramètre de régulation Derivee");
+	printf("\n5.	Parametre de regulation Proportionnelle ");
+	printf("\n6.	Parametre de regulation Integrale");
+	printf("\n7.	Parametre de regulation Derivee");
+	printf("\n votre choix :");
 	scanf("%d",&choix);
 
 
@@ -89,9 +90,9 @@ int StartAdressEcrituretureDef()
 
 	int choix;
 	printf("\n****************************Menu des voies**********************************");
-	printf("\n1.	Consigne de Température  ");
+	printf("\n1.	Consigne de Temperature  ");
 	printf("\n2.	Consigne de puissance");
-	printf("\n3.	Mode de régulation (0 : Automatique / 1 : Manuel) ");
+	printf("\n3.	Mode de regulation (0 : Automatique / 1 : Manuel) ");
 
 	scanf("%d",&choix);
 
@@ -268,9 +269,13 @@ ErrorComm parseModbusResponse(char* i_trameReceive, int i_lengthTrameReceived, T
 	
 	if(i_requestType==REQUEST_READ){
 			
-		if(i_typeVal==TYPE_SHORT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %hu",shortNum);}
-		if(i_typeVal==TYPE_FLOAT){floatNum=ModBusFloatAsciiToIeee(asciiDonnee,INTEL); printf(" La valeur :  %0.2f",floatNum);}
-		if(i_typeVal==TYPE_INT){intNum=ModBusIntAsciiToIeee(asciiDonnee,INTEL);printf(" La valeur : %i",intNum);}
+		//pour le module EP2407 on sait que le type de donne c est short
+		shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %hu",shortNum);
+
+		/*if(i_typeVal==TYPE_SHORT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %hu",shortNum);}
+		if(i_typeVal==TYPE_FLOAT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %h",floatNum);}
+		if(i_typeVal===TYPE_INT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %d",intNum);}*/
+	
 
 	}
 
