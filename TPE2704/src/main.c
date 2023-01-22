@@ -14,10 +14,8 @@ int main (int argc, char** argv)
     HANDLE handleSerialPort = NULL;
 
     printf("****************************************************************************\n");
-    printf("*                             PROTOCOLE MODBUS                             *\n");
+    printf("*                      PROTOCOLE MODBUS LIAISON SERIE                      *\n");
     printf("****************************************************************************\n");
-    printf("Saisir le type de communication: 0 (liaison Serie) / 1 (liaison IP)  ? ");
-    scanf("%d", &isSoketPort);
 
     //*******************************************************************************
         // Creation et ouverture du support de communication
@@ -77,13 +75,11 @@ int main (int argc, char** argv)
                  codret = sendSerialPort(handleSerialPort, 1000, trameToSend, lengthTrameToSend);
 
                   
-                  //reception de la trame du module 
+                  //reception de la trame 
                  if(codret == ERRORCOMM_NOERROR){
                     
                     
                     codret = recvSerialPort(handleSerialPort, 1000, trameReceived,&lengthTrameReceived);
-                 
-                    codret=parseModbusResponse(trameReceived,lengthTrameReceived,requestType,typeVal);
    
 
                     }
