@@ -207,7 +207,7 @@ int createRequestTrame(TypeRequest i_requestType, char* i_trameSend, TypeVal* i_
 			startAdress=choixDevoie(startAdress);			
 			
             //**
-			//la resolution etant de 16 bits le nombe de mot et donc 2  
+			//la resolution etant de 16 bits le nombe de mot est donc 2  
 			nbParamsToread=2;
 		
 
@@ -234,8 +234,6 @@ int createRequestTrame(TypeRequest i_requestType, char* i_trameSend, TypeVal* i_
 				printf("Entrer la valeur ");
 				scanf("%hi",&valToWriteShort);
 
-				//nombre d octet =1
-				nbParamsToread=1;
 
 				//Creation de la trame d ecriture  modbus pour short (ecriture 1 mot )
 				lengthTrameSend = makeTrameEcrModBusFromShort(1,MODBUS_FUNCTION_WRITE_WORD,startAdress,valToWriteShort,i_trameSend,INTEL); 

@@ -5,7 +5,7 @@
             "name": "(gdb) Lancer",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/tp3.exe",
+            "program": "${workspaceFolder}/projeteurotherm2704.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
