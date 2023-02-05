@@ -268,7 +268,8 @@ ErrorComm parseModbusResponse(char* i_trameReceive, int i_lengthTrameReceived, T
 	if(i_requestType==REQUEST_READ){
 			
 		//pour le module EP2407 on sait que le type de donne c est short
-		shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %hu",shortNum);
+		shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; 
+		printf(" La valeur : %hu",shortNum);
 
 		/*if(i_typeVal==TYPE_SHORT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %hu",shortNum);}
 		if(i_typeVal==TYPE_FLOAT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %h",floatNum);}
