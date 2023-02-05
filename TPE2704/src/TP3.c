@@ -157,6 +157,8 @@ HANDLE connectionSerialPort()
     int iPort = 2;
 		
     handleSerialPort = createSerialPort(iPort);
+
+	int valdef=3;
 	
 		
 	if(handleSerialPort != NULL && handleSerialPort != INVALID_HANDLE_VALUE)
@@ -165,6 +167,28 @@ HANDLE connectionSerialPort()
         int iBiteSize = 8;
         int iParite = 0;
         int iStopBit = 0;
+
+		printf("(1 oui/0 non)Voulez vous garder les valeur par defaut vitesse de Tr.:9600, nbre de bit de donnees: 8, parite: aucun, stop bit: 1\n");
+		scanf_s("%d", &valdef);
+
+		if(valdef==0){
+		
+			printf("*********** Parametrage du port serie ***********\n");
+        	printf("Entrer la vitesse de transmission? (4800,9600,19200) \n");
+       		scanf_s("%d", &iBaudRate);
+
+			printf("Entrer le nombre de bits de donnees? (5-8) \n");
+        	scanf_s("%d", &iBiteSize);
+
+			printf("Entrer la parite? 0 (pas de parite) / 1 (Parite impair) / 2 (Partie pair)\n");
+        	scanf_s("%d", &iParite);
+
+        	printf("Entrer le nombre de bist de stop? (0 (1 bit) / 1 (1.5 bits) / 2 (2 bits)\n");
+        	scanf_s("%d", &iStopBit);
+		
+		}
+
+		
 
         connexionOk = setParamSerialPort(handleSerialPort, iBaudRate,(BYTE)iBiteSize,(BYTE)iParite,(BYTE)iStopBit);
         if (connexionOk)
