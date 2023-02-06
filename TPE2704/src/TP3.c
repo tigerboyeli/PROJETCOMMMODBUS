@@ -164,9 +164,9 @@ HANDLE connectionSerialPort()
 	if(handleSerialPort != NULL && handleSerialPort != INVALID_HANDLE_VALUE)
 	{
 		int iBaudRate = 9600;
-        int iBiteSize = 8;
-        int iParite = 0;
-        int iStopBit = 0;
+        	int iBiteSize = 8;
+        	int iParite = 0;
+        	int iStopBit = 0;
 
 		printf("(1 oui/0 non)Voulez vous garder les valeur par defaut vitesse de Tr.:9600, nbre de bit de donnees: 8, parite: aucun, stop bit: 1\n");
 		scanf_s("%d", &valdef);
@@ -174,17 +174,17 @@ HANDLE connectionSerialPort()
 		if(valdef==0){
 		
 			printf("*********** Parametrage du port serie ***********\n");
-        	printf("Entrer la vitesse de transmission? (4800,9600,19200) \n");
-       		scanf_s("%d", &iBaudRate);
+        		printf("Entrer la vitesse de transmission? (4800,9600,19200) \n");
+       			scanf_s("%d", &iBaudRate);
 
 			printf("Entrer le nombre de bits de donnees? (5-8) \n");
-        	scanf_s("%d", &iBiteSize);
+        		scanf_s("%d", &iBiteSize);
 
 			printf("Entrer la parite? 0 (pas de parite) / 1 (Parite impair) / 2 (Partie pair)\n");
-        	scanf_s("%d", &iParite);
+        		scanf_s("%d", &iParite);
 
-        	printf("Entrer le nombre de bist de stop? (0 (1 bit) / 1 (1.5 bits) / 2 (2 bits)\n");
-        	scanf_s("%d", &iStopBit);
+        		printf("Entrer le nombre de bist de stop? (0 (1 bit) / 1 (1.5 bits) / 2 (2 bits)\n");
+        		scanf_s("%d", &iStopBit);
 		
 		}
 
@@ -231,7 +231,7 @@ int createRequestTrame(TypeRequest i_requestType, char* i_trameSend, TypeVal* i_
 			startAdress=choixDevoie(startAdress);			
 			
             //**
-			//la resolution etant de 16 bits le nombe de mot est donc 2  
+			//la resolution etant de 16 bits le nombre de mot est donc 2  
 			nbParamsToread=2;
 		
 
@@ -240,7 +240,7 @@ int createRequestTrame(TypeRequest i_requestType, char* i_trameSend, TypeVal* i_
 
 			break;}
 
-		// Deamnde d'ecriture
+		// Demande d'ecriture
 		case REQUEST_WRITE:{
 			int typeValCopy;
 
@@ -295,9 +295,7 @@ ErrorComm parseModbusResponse(char* i_trameReceive, int i_lengthTrameReceived, T
 		shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; 
 		printf(" La valeur : %hu",shortNum);
 
-		/*if(i_typeVal==TYPE_SHORT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %hu",shortNum);}
-		if(i_typeVal==TYPE_FLOAT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %h",floatNum);}
-		if(i_typeVal===TYPE_INT){shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; printf(" La valeur : %d",intNum);}*/
+		
 	
 
 	}
