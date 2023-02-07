@@ -34,7 +34,8 @@ void printState(ErrorComm codret)
 	return;
 }
 
-//choix de module
+
+/*Cette fontion permet de definit l'adresse de lecture en fontion du choix de l utilisatuer */
 int StartAdressLectureDef()
 {	
 	int startAdress;
@@ -84,6 +85,7 @@ int StartAdressLectureDef()
 	return startAdress;
 }
 
+/*Cette fontion permet de definit l'adresse d'ecriture en fontion du choix de l utilisatuer */
 int StartAdressEcrituretureDef()
 {
 	int startAdress;
@@ -115,7 +117,8 @@ int StartAdressEcrituretureDef()
 	return startAdress;
 }
 
-
+/*en cas de lecture chaque module contient 3 voies */
+/*cette fonction permet alors de choisir la voie en faisant le calcul necessaire sur les adresses*/
 int choixDevoie(int startAdress)
 {	
 	int choix;
@@ -168,23 +171,24 @@ HANDLE connectionSerialPort()
         	int iParite = 0;
         	int iStopBit = 0;
 
-		printf("(1 oui/0 non)Voulez vous garder les valeur par defaut vitesse de Tr.:9600, nbre de bit de donnees: 8, parite: aucun, stop bit: 1\n");
+		printf("(1 oui/0 non)Voulez vous garder les valeur par defaut:\nvitesse de Tr.:9600, nbre de bit de donnees: 8, parite: aucun, stop bit: 1\n");
 		scanf_s("%d", &valdef);
 
-		if(valdef==0){
+		if(valdef==0)
+		{
 		
 			printf("*********** Parametrage du port serie ***********\n");
-        		printf("Entrer la vitesse de transmission? (4800,9600,19200) \n");
-       			scanf_s("%d", &iBaudRate);
+        	printf("Entrer la vitesse de transmission? (4800,9600,19200) \n");
+       		scanf_s("%d", &iBaudRate);
 
 			printf("Entrer le nombre de bits de donnees? (5-8) \n");
-        		scanf_s("%d", &iBiteSize);
+        	scanf_s("%d", &iBiteSize);
 
 			printf("Entrer la parite? 0 (pas de parite) / 1 (Parite impair) / 2 (Partie pair)\n");
-        		scanf_s("%d", &iParite);
+        	scanf_s("%d", &iParite);
 
-        		printf("Entrer le nombre de bist de stop? (0 (1 bit) / 1 (1.5 bits) / 2 (2 bits)\n");
-        		scanf_s("%d", &iStopBit);
+        	printf("Entrer le nombre de bist de stop? (0 (1 bit) / 1 (1.5 bits) / 2 (2 bits)\n");
+        	scanf_s("%d", &iStopBit);
 		
 		}
 
@@ -235,20 +239,20 @@ int createRequestTrame(TypeRequest i_requestType, char* i_trameSend, TypeVal* i_
 			nbParamsToread=2;
 		
 
-			//Creation de la trame de lecture modbus=>address 1 function 03 nombre de parametre 2 et CRC
+			//Creation de la trame de lecture modbus=>address 1 |function 03 |adresse de debut|nombre de parametre 2| CRC
 			lengthTrameSend= makeTrameLecModBus(1,MODBUS_FUNCTION_READ_NWORDS,startAdress,nbParamsToread,i_trameSend,INTEL); 
 
 			break;}
 
 		// Demande d'ecriture
 		case REQUEST_WRITE:{
+
 			int typeValCopy;
 
 			printf("\n DEMANDE D'ECRITURE\n");
 
 			startAdress=StartAdressEcrituretureDef();
 
-            // A COMPLETER
 			*i_typeVal=TYPE_SHORT;
 	
 			//Selon le type de la valeur on va recuperer un short un int ou un float 
@@ -286,6 +290,7 @@ ErrorComm parseModbusResponse(char* i_trameReceive, int i_lengthTrameReceived, T
     // A COMPLETER
 
 	codret=parseTrameModBus(i_trameReceive,i_lengthTrameReceived,value,&nbValue,&address,&codeFunction,INTEL);
+
 	//on prend que la partie avec la donnee pour l afficher 
 	 char *asciiDonnee=i_trameReceive+3;
 	
@@ -295,8 +300,6 @@ ErrorComm parseModbusResponse(char* i_trameReceive, int i_lengthTrameReceived, T
 		shortNum=ModBusShortAsciiToIeee(asciiDonnee,INTEL) ; 
 		printf(" La valeur : %hu",shortNum);
 
-		
-	
 
 	}
 
