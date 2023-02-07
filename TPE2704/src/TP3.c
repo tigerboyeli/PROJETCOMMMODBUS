@@ -236,7 +236,7 @@ int createRequestTrame(TypeRequest i_requestType, char* i_trameSend, TypeVal* i_
 			
             //**
 			//la resolution etant de 16 bits le nombre de mot est donc 2  
-			nbParamsToread=2;
+			nbParamsToread=1;
 		
 
 			//Creation de la trame de lecture modbus=>address 1 |function 03 |adresse de debut|nombre de parametre 2| CRC
